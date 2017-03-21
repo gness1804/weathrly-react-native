@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 const WeatherCard = ({...props}) => {
+  // const pic = props.icon_url
   return (
     <View>
     <Text>Time Period: {props.title}</Text>

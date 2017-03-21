@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Text,
   View,
-  Image
 } from 'react-native';
 
-const WeatherCard = ({...props}) => {
+const WeatherCard = ({ ...props }) => {
   // const pic = props.icon_url
   return (
     <View>
-    <Text>Time Period: {props.title}</Text>
-    <Text>Forecast: {props.fcttext}</Text>
+      <Text>Time Period: {props.title}</Text>
+      <Text>Forecast: {props.fcttext}</Text>
     </View>
   );
 }

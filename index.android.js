@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View
+  View,
 } from 'react-native';
-import styles from "./styles/index-android-styles";
+import styles from './styles/index-android-styles';
 import Header from './components/Header';
 import Main from './components/Main';
 

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Text,
-  View
+  View,
 } from 'react-native';
 import styles from '../styles/header-styles';
 

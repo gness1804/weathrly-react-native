@@ -11,18 +11,18 @@ import axios from 'axios';
 import WeatherCard from './WeatherCard';
 
 class Main extends Component {
-    constructor(){
-      super()
-      this.state = {
-        weather: [],
-        location: '',
-        state: '',
-      }
+  constructor() {
+    super()
+    this.state = {
+      weather: [],
+      location: '',
+      state: '',
     }
+  }
 
-  componentDidMount () {
-    AsyncStorage.getItem('city').then((city) => {this.setState({location: city})})
-    AsyncStorage.getItem('state').then((state) => {this.setState({state})})
+  componentDidMount() {
+    AsyncStorage.getItem('city').then((city) => { this.setState({ location: city }) })
+    AsyncStorage.getItem('state').then((state) => { this.setState({ state }) })
   }
 
   getWeather = () => {
@@ -31,20 +31,21 @@ class Main extends Component {
     const url = `http://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${state}/${city}.json`
     axios.get(url)
     .then((data) => {
-      this.setState({weather: data.data.forecast.txt_forecast.forecastday})
+      this.setState({ weather: data.data.forecast.txt_forecast.forecastday })
     })
-    .then(() => {AsyncStorage.setItem('city', city)})
-    .then(() => {AsyncStorage.setItem('state', state)})
+    .then(() => { AsyncStorage.setItem('city', city) })
+    .then(() => { AsyncStorage.setItem('state', state) })
   }
 
   render() {
-
     const { location, state, weather } = this.state
     let list
     if (location) {
       list = weather.map((item) => {
-        return <WeatherCard {...item}
-        key={Date.now() * Math.random()}/>
+        return (<WeatherCard
+          {...item}
+          key={Date.now() * Math.random()}
+        />)
       })
     } else {
       list = <Text>Please enter in a location.</Text>
@@ -53,71 +54,70 @@ class Main extends Component {
     return (
       <View>
         <TextInput
-        placeholder="City"
-        defaultValue={location || ''}
-        onChangeText={(text) => { this.setState({location: text}) }}
+          placeholder="City"
+          defaultValue={location || ''}
+          onChangeText={(text) => { this.setState({ location: text }) }}
         />
         <Picker
           selectedValue={state}
-          onValueChange={(choice) => { this.setState({state: choice}) }}
+          onValueChange={(choice) => { this.setState({ state: choice }) }}
         >
-          <Picker.Item label="Alabama" value="AL"/>
-          <Picker.Item label="Alaska" value="AK"/>
-          <Picker.Item label="Arizona" value="AZ"/>
-          <Picker.Item label="Arkansas" value="AR"/>
-          <Picker.Item label="California" value="CA"/>
-          <Picker.Item label="Colorado" value="CO"/>
-          <Picker.Item label="Connecticut" value="CT"/>
-          <Picker.Item label="Delaware" value="DE"/>
-          <Picker.Item label="District of Columbia" value="DC"/>
-          <Picker.Item label="Florida" value="FL"/>
-          <Picker.Item label="Georgia" value="GA"/>
-          <Picker.Item label="Hawaii" value="HI"/>
-          <Picker.Item label="Idaho" value="ID"/>
-          <Picker.Item label="Illinois" value="IL"/>
-          <Picker.Item label="Indiana" value="IN"/>
-          <Picker.Item label="Iowa" value="IA"/>
-          <Picker.Item label="Kansas" value="KS"/>
-          <Picker.Item label="Kentucky" value="KY"/>
-          <Picker.Item label="Louisiana" value="LA"/>
-          <Picker.Item label="Maine" value="ME"/>
-          <Picker.Item label="Maryland" value="MD"/>
-          <Picker.Item label="Massachusetts" value="MA"/>
-          <Picker.Item label="Michigan" value="MI"/>
-          <Picker.Item label="Minnesota" value="MN"/>
-          <Picker.Item label="Mississippi" value="MS"/>
-          <Picker.Item label="Missouri" value="MO"/>
-          <Picker.Item label="Montana" value="MT"/>
-          <Picker.Item label="Nebraska" value="NE"/>
-          <Picker.Item label="Nevada" value="NV"/>
-          <Picker.Item label="New Hampshire" value="NH"/>
-          <Picker.Item label="New Jersey" value="NJ"/>
-          <Picker.Item label="New Mexico" value="NM"/>
-          <Picker.Item label="New York" value="NY"/>
-          <Picker.Item label="North Carolina" value="NC"/>
-          <Picker.Item label="North Dakota" value="ND"/>
-          <Picker.Item label="Ohio" value="OH"/>
-          <Picker.Item label="Oklahoma" value="OK"/>
-          <Picker.Item label="Oregon" value="OR"/>
-          <Picker.Item label="Pennsylvania" value="PA"/>
-          <Picker.Item label="Rhode Island" value="RI"/>
-          <Picker.Item label="South Carolina" value="SC"/>
-          <Picker.Item label="South Dakota" value="SD"/>
-          <Picker.Item label="Tennessee" value="TN"/>
-          <Picker.Item label="Texas" value="TX"/>
-          <Picker.Item label="Utah" value="UT"/>
-          <Picker.Item label="Vermont" value="VT"/>
-          <Picker.Item label="Virginia" value="VA"/>
-          <Picker.Item label="Washington (state)" value="WA"/>
-          <Picker.Item label="West Virginia" value="WV"/>
-          <Picker.Item label="Wisconsin" value="WI"/>
-          <Picker.Item label="Wyoming" value="WY"/>
+          <Picker.Item label="Alabama" value="AL" />
+          <Picker.Item label="Alaska" value="AK" />
+          <Picker.Item label="Arizona" value="AZ" />
+          <Picker.Item label="Arkansas" value="AR" />
+          <Picker.Item label="California" value="CA" />
+          <Picker.Item label="Colorado" value="CO" />
+          <Picker.Item label="Connecticut" value="CT" />
+          <Picker.Item label="Delaware" value="DE" />
+          <Picker.Item label="District of Columbia" value="DC" />
+          <Picker.Item label="Florida" value="FL" />
+          <Picker.Item label="Georgia" value="GA" />
+          <Picker.Item label="Hawaii" value="HI" />
+          <Picker.Item label="Idaho" value="ID" />
+          <Picker.Item label="Illinois" value="IL" />
+          <Picker.Item label="Indiana" value="IN" />
+          <Picker.Item label="Iowa" value="IA" />
+          <Picker.Item label="Kansas" value="KS" />
+          <Picker.Item label="Kentucky" value="KY" />
+          <Picker.Item label="Louisiana" value="LA" />
+          <Picker.Item label="Maine" value="ME" />
+          <Picker.Item label="Maryland" value="MD" />
+          <Picker.Item label="Massachusetts" value="MA" />
+          <Picker.Item label="Michigan" value="MI" />
+          <Picker.Item label="Minnesota" value="MN" />
+          <Picker.Item label="Mississippi" value="MS" />
+          <Picker.Item label="Missouri" value="MO" />
+          <Picker.Item label="Montana" value="MT" />
+          <Picker.Item label="Nebraska" value="NE" />
+          <Picker.Item label="Nevada" value="NV" />
+          <Picker.Item label="New Hampshire" value="NH" />
+          <Picker.Item label="New Jersey" value="NJ" />
+          <Picker.Item label="New Mexico" value="NM" />
+          <Picker.Item label="New York" value="NY" />
+          <Picker.Item label="North Carolina" value="NC" />
+          <Picker.Item label="North Dakota" value="ND" />
+          <Picker.Item label="Ohio" value="OH" />
+          <Picker.Item label="Oklahoma" value="OK" />
+          <Picker.Item label="Oregon" value="OR" />
+          <Picker.Item label="Pennsylvania" value="PA" />
+          <Picker.Item label="Rhode Island" value="RI" />
+          <Picker.Item label="South Carolina" value="SC" />
+          <Picker.Item label="South Dakota" value="SD" />
+          <Picker.Item label="Tennessee" value="TN" />
+          <Picker.Item label="Texas" value="TX" />
+          <Picker.Item label="Utah" value="UT" />
+          <Picker.Item label="Vermont" value="VT" />
+          <Picker.Item label="Virginia" value="VA" />
+          <Picker.Item label="Washington (state)" value="WA" />
+          <Picker.Item label="West Virginia" value="WV" />
+          <Picker.Item label="Wisconsin" value="WI" />
+          <Picker.Item label="Wyoming" value="WY" />
         </Picker>
         <Button
           title="Get Weather"
           onPress={() => { this.getWeather() }}
-        >
-        </Button>
+        />
         {list}
       </View>
     );

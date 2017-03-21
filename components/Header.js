@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.headline}>Welcome to Weathrly</Text>
-      <Text>Your World, Your Weather.</Text>
+      <Text style={styles.tagline}>Your World, Your Weather.</Text>
     </View>
   );
 }

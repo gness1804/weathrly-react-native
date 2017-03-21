@@ -4,6 +4,7 @@ import {
   View,
   Button,
   AsyncStorage,
+  TextInput,
 } from 'react-native';
 import axios from 'axios';
 
@@ -32,6 +33,10 @@ class Main extends Component {
   render() {
     return (
       <View>
+        <TextInput
+        placeholder="City"
+        onChangeText={(text) => { this.setState({location: text}) }}
+        />
         <Button
           title="Get Weather"
           onPress={() => { this.getWeather() }}

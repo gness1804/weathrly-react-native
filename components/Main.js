@@ -5,6 +5,7 @@ import {
   Button,
   AsyncStorage,
   TextInput,
+  Picker,
 } from 'react-native';
 import axios from 'axios';
 
@@ -31,12 +32,22 @@ class Main extends Component {
   }
 
   render() {
+
+    const { location, state } = this.state
+
     return (
       <View>
         <TextInput
         placeholder="City"
         onChangeText={(text) => { this.setState({location: text}) }}
         />
+        <Picker
+          selectedValue={state}
+          onValueChange={(choice) => { this.setState({state: choice}) }}
+        >
+          <Picker.Item label="Arizona" value="AZ"/>
+          <Picker.Item label="Arkansas" value="AR"/>
+        </Picker>
         <Button
           title="Get Weather"
           onPress={() => { this.getWeather() }}

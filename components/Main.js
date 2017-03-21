@@ -6,9 +6,11 @@ import {
   AsyncStorage,
   TextInput,
   Picker,
+  ScrollView,
 } from 'react-native';
 import axios from 'axios';
 import WeatherCard from './WeatherCard';
+import styles from '../styles/main-styles';
 
 class Main extends Component {
   constructor() {
@@ -52,7 +54,10 @@ class Main extends Component {
     }
 
     return (
-      <View>
+      <View style={styles.container}>
+        <Text style={styles.instructions}>
+          --Choose your city and state (US only)--
+        </Text>
         <TextInput
           placeholder="City"
           defaultValue={location || ''}
@@ -118,7 +123,9 @@ class Main extends Component {
           title="Get Weather"
           onPress={() => { this.getWeather() }}
         />
-        {list}
+        <ScrollView>
+          {list}
+        </ScrollView>
       </View>
     );
   }

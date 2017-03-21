@@ -7,6 +7,7 @@ import {
   TextInput,
   Picker,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
 import WeatherCard from './WeatherCard';
@@ -39,6 +40,10 @@ class Main extends Component {
     .then(() => { AsyncStorage.setItem('state', state) })
   }
 
+  clearCityField = () => {
+    this.setState({ location: '' });
+  }
+
   render() {
     const { location, state, weather } = this.state
     let list
@@ -60,9 +65,14 @@ class Main extends Component {
         </Text>
         <TextInput
           placeholder="City"
-          defaultValue={location || ''}
+          value={location || ''}
           onChangeText={(text) => { this.setState({ location: text }) }}
         />
+        <TouchableOpacity
+          onPress={this.clearCityField}
+        >
+          <Text>Clear city</Text>
+        </TouchableOpacity>
         <Picker
           selectedValue={state}
           onValueChange={(choice) => { this.setState({ state: choice }) }}

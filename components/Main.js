@@ -15,10 +15,15 @@ class Main extends Component {
       super()
       this.state = {
         weather: [],
-        location: 'Denver',
-        state: 'CO',
+        location: '',
+        state: '',
       }
     }
+
+  componentDidMount () {
+    AsyncStorage.getItem('city').then((city) => {this.setState({location: city})})
+    AsyncStorage.getItem('state').then((state) => {this.setState({state})})
+  }
 
   getWeather = () => {
     const city = this.state.location.toLowerCase();
@@ -35,15 +40,21 @@ class Main extends Component {
   render() {
 
     const { location, state, weather } = this.state
-    const list = weather.map((item) => {
-      return <WeatherCard {...item}
-      key={Date.now() * Math.random()}/>
-    })
+    let list
+    if (location) {
+      list = weather.map((item) => {
+        return <WeatherCard {...item}
+        key={Date.now() * Math.random()}/>
+      })
+    } else {
+      list = <Text>Please enter in a location.</Text>
+    }
 
     return (
       <View>
         <TextInput
         placeholder="City"
+        defaultValue={location || ''}
         onChangeText={(text) => { this.setState({location: text}) }}
         />
         <Picker

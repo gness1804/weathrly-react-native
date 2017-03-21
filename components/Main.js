@@ -8,6 +8,7 @@ import {
   Picker,
 } from 'react-native';
 import axios from 'axios';
+import WeatherCard from './WeatherCard';
 
 class Main extends Component {
     constructor(){
@@ -33,7 +34,11 @@ class Main extends Component {
 
   render() {
 
-    const { location, state } = this.state
+    const { location, state, weather } = this.state
+    const list = weather.map((item) => {
+      return <WeatherCard {...item}
+      key={Date.now() * Math.random()}/>
+    })
 
     return (
       <View>
@@ -102,6 +107,7 @@ class Main extends Component {
           onPress={() => { this.getWeather() }}
         >
         </Button>
+        {list}
       </View>
     );
   }

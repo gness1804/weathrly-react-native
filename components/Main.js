@@ -123,7 +123,9 @@ class Main extends Component {
           title="Get Weather"
           onPress={() => { this.getWeather() }}
         />
-        <ScrollView>
+        <ScrollView
+          style={styles.weatherCardsList}
+        >
           {list}
         </ScrollView>
       </View>

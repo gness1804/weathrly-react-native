@@ -7,6 +7,9 @@ const styles = {
     marginBottom: 20,
     textAlign: 'center',
   },
+  weatherCardsList: {
+    marginTop: 40,
+  },
 }
 
 export default styles

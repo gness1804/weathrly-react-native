@@ -7,7 +7,6 @@ import {
   TextInput,
   Picker,
   ScrollView,
-  TouchableOpacity,
   Alert,
 } from 'react-native';
 import axios from 'axios';
@@ -65,10 +64,6 @@ class Main extends Component {
     }
   }
 
-  clearCityField = () => {
-    this.setState({ location: '' });
-  }
-
   render() {
     const { location, state, weather, view, zip } = this.state
     let list
@@ -85,11 +80,6 @@ class Main extends Component {
             value={location || ''}
             onChangeText={(text) => { this.setState({ location: text }) }}
           />
-          <TouchableOpacity
-            onPress={this.clearCityField}
-          >
-            <Text style={styles.clearCity}>Clear city</Text>
-          </TouchableOpacity>
           <Picker
             selectedValue={state}
             onValueChange={(choice) => { this.setState({ state: choice }) }}
@@ -176,6 +166,7 @@ class Main extends Component {
     return (
       <View style={styles.container}>
         {mode}
+        <Text>Select Mode:</Text>
         <Picker
           selectedValue={view}
           onValueChange={(choice) => { this.setState({ view: choice }) }}

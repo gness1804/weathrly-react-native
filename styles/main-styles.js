@@ -1,4 +1,9 @@
 const styles = {
+  clearCity: {
+    marginBottom: 20,
+    marginTop: 20,
+    textAlign: 'center',
+  },
   container: {
     padding: 20,
   },
@@ -9,6 +14,11 @@ const styles = {
   },
   weatherCardsList: {
     marginTop: 40,
+  },
+  zipButton: {
+    marginBottom: 20,
+    marginTop: 20,
+    textAlign: 'center',
   },
 }
 

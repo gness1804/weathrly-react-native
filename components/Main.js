@@ -8,6 +8,7 @@ import {
   Picker,
   ScrollView,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import axios from 'axios';
 import WeatherCard from './WeatherCard';
@@ -20,6 +21,7 @@ class Main extends Component {
       weather: [],
       location: '',
       state: '',
+      zip: null,
     }
   }
 
@@ -32,6 +34,10 @@ class Main extends Component {
     const city = this.state.location.toLowerCase();
     const state = this.state.state;
     const url = `http://api.wunderground.com/api/47fe8304fc0c9639/forecast/q/${state}/${city}.json`
+    if (!city || !state) {
+      Alert.alert('Error: you must enter both a city and a state.')
+      return
+    }
     axios.get(url)
     .then((data) => {
       this.setState({ weather: data.data.forecast.txt_forecast.forecastday })
@@ -47,6 +53,7 @@ class Main extends Component {
   render() {
     const { location, state, weather } = this.state
     let list
+
     if (location) {
       list = weather.map((item) => {
         return (<WeatherCard
@@ -66,12 +73,13 @@ class Main extends Component {
         <TextInput
           placeholder="City"
           value={location || ''}
+          ref={(input) => { this.cityText = input }}
           onChangeText={(text) => { this.setState({ location: text }) }}
         />
         <TouchableOpacity
           onPress={this.clearCityField}
         >
-          <Text>Clear city</Text>
+          <Text style={styles.clearCity}>Clear city</Text>
         </TouchableOpacity>
         <Picker
           selectedValue={state}
@@ -129,6 +137,11 @@ class Main extends Component {
           <Picker.Item label="Wisconsin" value="WI" />
           <Picker.Item label="Wyoming" value="WY" />
         </Picker>
+        <TouchableOpacity
+          onPress={this.clearCityField}
+        >
+          <Text style={styles.zipButton}>Search by Zip</Text>
+        </TouchableOpacity>
         <Button
           title="Get Weather"
           onPress={() => { this.getWeather() }}

@@ -12,6 +12,11 @@ const styles = {
     marginBottom: 20,
     textAlign: 'center',
   },
+  toggleInputsButtons: {
+    marginBottom: 20,
+    marginTop: 20,
+    textAlign: 'center',
+  },
   weatherCardsList: {
     marginTop: 40,
   },

@@ -8,6 +8,7 @@ import {
   Picker,
   ScrollView,
   Alert,
+  TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
 import WeatherCard from './WeatherCard';
@@ -23,6 +24,7 @@ class Main extends Component {
       state: '',
       zip: null,
       view: 'us-city-state',
+      showTopPart: true,
     }
   }
 
@@ -65,7 +67,7 @@ class Main extends Component {
   }
 
   render() {
-    const { location, state, weather, view, zip } = this.state
+    const { location, state, weather, view, zip, showTopPart } = this.state
     let list
     let mode
 
@@ -168,18 +170,30 @@ class Main extends Component {
     return (
       <View style={styles.container}>
         {mode}
-        <Text>Select Mode:</Text>
-        <Picker
-          selectedValue={view}
-          onValueChange={(choice) => { this.setState({ view: choice }) }}
+        {showTopPart && <View
+          style={styles.topPart}
         >
-          <Picker.Item label="US City and State" value="us-city-state" />
-          <Picker.Item label="US Zip Code" value="us-zip" />
-        </Picker>
-        <Button
-          title="Get Weather"
-          onPress={() => { this.getWeather() }}
-        />
+          <Text>Select Mode:</Text>
+          <Picker
+            selectedValue={view}
+            onValueChange={(choice) => { this.setState({ view: choice }) }}
+          >
+            <Picker.Item label="US City and State" value="us-city-state" />
+            <Picker.Item label="US Zip Code" value="us-zip" />
+          </Picker>
+          <Button
+            title="Get Weather"
+            onPress={() => { this.getWeather(); }}
+          />
+        </View>}
+        {showTopPart ?
+          <TouchableOpacity>
+            <Text style={styles.toggleInputsButtons}>Hide Inputs</Text>
+          </TouchableOpacity>
+          :
+          <TouchableOpacity>
+            <Text>Show Inputs</Text>
+          </TouchableOpacity>}
         <ScrollView
           style={styles.weatherCardsList}
         >

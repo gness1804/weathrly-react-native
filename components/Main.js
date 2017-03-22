@@ -66,6 +66,10 @@ class Main extends Component {
     }
   }
 
+  toggleInputsView = () => {
+    this.setState({ showTopPart: !this.state.showTopPart });
+  }
+
   render() {
     const { location, state, weather, view, zip, showTopPart } = this.state
     let list
@@ -169,10 +173,10 @@ class Main extends Component {
 
     return (
       <View style={styles.container}>
-        {mode}
         {showTopPart && <View
           style={styles.topPart}
         >
+          {mode}
           <Text>Select Mode:</Text>
           <Picker
             selectedValue={view}
@@ -187,12 +191,16 @@ class Main extends Component {
           />
         </View>}
         {showTopPart ?
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={this.toggleInputsView}
+          >
             <Text style={styles.toggleInputsButtons}>Hide Inputs</Text>
           </TouchableOpacity>
           :
-          <TouchableOpacity>
-            <Text>Show Inputs</Text>
+          <TouchableOpacity
+            onPress={this.toggleInputsView}
+          >
+            <Text style={styles.toggleInputsButtons}>Show Inputs</Text>
           </TouchableOpacity>}
         <ScrollView
           style={styles.weatherCardsList}

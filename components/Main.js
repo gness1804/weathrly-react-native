@@ -143,7 +143,9 @@ class Main extends Component {
     if (view === 'us-zip') {
       mode = (
         <View>
-          <Text>Enter US Zip Code (5 digits only).</Text>
+          <Text style={styles.instructions}>
+            --Enter US Zip Code (5 digits only)--
+          </Text>
           <TextInput
             placeholder="Zip"
             value={zip}
@@ -152,7 +154,7 @@ class Main extends Component {
         </View>)
     }
 
-    if (location) {
+    if ((view === 'us-city-state' && location) || (view === 'us-zip' && zip)) {
       list = weather.map((item) => {
         return (<WeatherCard
           {...item}
@@ -170,7 +172,6 @@ class Main extends Component {
         <Picker
           selectedValue={view}
           onValueChange={(choice) => { this.setState({ view: choice }) }}
-          title="Change Selection Criteria..."
         >
           <Picker.Item label="US City and State" value="us-city-state" />
           <Picker.Item label="US Zip Code" value="us-zip" />

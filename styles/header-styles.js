@@ -1,6 +1,10 @@
 const styles = {
   container: {
+    alignItems: 'center',
     marginBottom: 20,
+  },
+  credit: {
+    marginTop: 10,
   },
   headline: {
     fontSize: 30,
@@ -8,6 +12,11 @@ const styles = {
     marginBottom: 20,
     marginTop: 20,
     textAlign: 'center',
+  },
+  pic: {
+    height: 70,
+    marginTop: 10,
+    width: 100,
   },
   tagline: {
     fontSize: 20,

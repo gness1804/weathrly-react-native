@@ -12,7 +12,7 @@ const WeatherCard = ({ ...props }) => {
     <View style={styles.container}>
       <Image
         style={styles.pic}
-        source={{uri: `${pic}`}}
+        source={{ uri: `${pic}` }}
       />
       <Text style={styles.timePeriod}>Time Period: {props.title}</Text>
       <Text style={styles.forecast}>

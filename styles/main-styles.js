@@ -29,7 +29,7 @@ const styles = {
     textAlign: 'center',
   },
   weatherCardsList: {
-    marginBottom: 50,
+    marginBottom: 30,
   },
   zipButton: {
     marginBottom: 20,

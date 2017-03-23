@@ -63,6 +63,7 @@ class Main extends Component {
       .then((data) => {
         this.setState({ weather: data.data.forecast.txt_forecast.forecastday })
       })
+      .then(() => { this.setState({ showTopPart: false }) })
       .then(() => { AsyncStorage.setItem('zip', zipCode) })
     }
   }

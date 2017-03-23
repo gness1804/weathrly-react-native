@@ -189,7 +189,7 @@ class Main extends Component {
           <Button
             title="Get Weather"
             color="rgb(43, 34, 203)"
-            onPress={() => { this.getWeather(); }}
+            onPress={() => { this.getWeather() }}
           />
         </View>}
         {showTopPart ?

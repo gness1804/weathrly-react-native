@@ -47,6 +47,7 @@ class Main extends Component {
       .then((data) => {
         this.setState({ weather: data.data.forecast.txt_forecast.forecastday })
       })
+      .then(() => {this.setState({ showTopPart: false })})
       .then(() => { AsyncStorage.setItem('city', city) })
       .then(() => { AsyncStorage.setItem('state', state) })
     }
@@ -177,7 +178,7 @@ class Main extends Component {
           style={styles.topPart}
         >
           {mode}
-          <Text>Select Mode:</Text>
+          <Text style={styles.selectModeText}>Select Mode:</Text>
           <Picker
             selectedValue={view}
             onValueChange={(choice) => { this.setState({ view: choice }) }}

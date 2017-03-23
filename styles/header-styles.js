@@ -1,7 +1,6 @@
 const styles = {
   container: {
     alignItems: 'center',
-    marginBottom: 20,
   },
   credit: {
     marginTop: 10,
@@ -9,7 +8,7 @@ const styles = {
   headline: {
     fontSize: 30,
     fontWeight: '700',
-    marginBottom: 20,
+    marginBottom: 10,
     marginTop: 20,
     textAlign: 'center',
   },

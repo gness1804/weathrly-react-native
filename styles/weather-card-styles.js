@@ -10,6 +10,12 @@ const styles = {
     marginBottom: 10,
     textAlign: 'center',
   },
+  pic: {
+    alignSelf: 'center',
+    height: 50,
+    marginBottom: 10,
+    width: 50,
+  },
   textSpan: {
     fontWeight: '600',
   },

@@ -15,17 +15,18 @@ const styles = {
   selectModeText: {
     fontSize: 18,
     marginBottom: 10,
-    marginTop: 10,
+    marginTop: 5,
     textAlign: 'center',
   },
   toggleInputsButtons: {
-    fontSize: 18,
+    backgroundColor: 'rgb(12, 56, 221)',
+    borderColor: '#000',
+    borderWidth: 1,
+    color: '#FFF',
+    fontSize: 16,
     marginBottom: 20,
-    marginTop: 20,
+    marginTop: 15,
     textAlign: 'center',
-  },
-  weatherCardsList: {
-    // marginTop: 40,
   },
   zipButton: {
     marginBottom: 20,

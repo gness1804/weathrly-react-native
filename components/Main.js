@@ -188,6 +188,7 @@ class Main extends Component {
           </Picker>
           <Button
             title="Get Weather"
+            color="rgb(43, 34, 203)"
             onPress={() => { this.getWeather(); }}
           />
         </View>}
@@ -195,13 +196,13 @@ class Main extends Component {
           <TouchableOpacity
             onPress={this.toggleInputsView}
           >
-            <Text style={styles.toggleInputsButtons}>Hide Inputs</Text>
+            <Text style={styles.toggleInputsButtons}>HIDE INPUTS</Text>
           </TouchableOpacity>
           :
           <TouchableOpacity
             onPress={this.toggleInputsView}
           >
-            <Text style={styles.toggleInputsButtons}>Show Inputs</Text>
+            <Text style={styles.toggleInputsButtons}>SHOW INPUTS</Text>
           </TouchableOpacity>}
         <ScrollView
           style={styles.weatherCardsList}
